@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boggle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr); /* Four columns */
+          gap: 20px; /* Equal gap between rows and columns */
+          justify-content: center; /* Centers the grid horizontally */
+          justify-items: center; /* Centers the dice within the grid */
+          align-items: center; /* Ensures vertical alignment (optional) */
+          margin: 0 auto; /* Centers the grid on the page */
+          width: fit-content; /* Keeps the grid compact */
+        }
+        .dice {
+            font-size: 36px;
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boggle</h1>
+    <div class="grid" id="diceGrid">
+        <!-- Dice elements will be dynamically created -->
+    </div>
+
+    <script>
+      // Example graph represented as an adjacency list
+      const graph = {
+        A: ['B', 'E', 'F'],
+        B: ['A', 'C', 'E', 'F', 'G'],
+        C: ['B', 'D', 'F', 'G', 'H'],
+        D: ['C', 'G', 'H'],
+        E: ['A', 'B', 'F', 'I', 'J'],
+        F: ['A', 'B', 'C', 'E', 'G', 'I', 'J', 'K'],
+        G: ['B', 'C', 'D', 'F', 'H', 'J', 'K', 'L'],
+        H: ['C', 'D', 'G', 'K', 'L'],
+        I: ['E', 'F', 'J', 'M,', 'N'],
+        J: ['E', 'F', 'G', 'I', 'K', 'M', 'N', 'O'],
+        K: ['F', 'G', 'H', 'J', 'L', 'N', 'O', 'P'],
+        L: ['G', 'H', 'K', 'O', 'P'],
+        M: ['I', 'J', 'N'],
+        N: ['I', 'J', 'K', 'M', 'O'],
+        O: ['J', 'K', 'L', 'N', 'P'],
+        P: ['K', 'L', 'P']
+      };
+
+      // Helper function to perform DFS
+      function findPaths(graph, startNode, path = [], allPaths = []) {
+        path.push(startNode); // Add current node to the path
+
+        // If path length exceeds 3, store it
+        if (path.length > 3) {
+            allPaths.push([...path]);
+        }
+
+        // Explore neighbors of the current node
+        for (let neighbor of graph[startNode]) {
+            // Only visit the neighbor if it's not already in the path
+            if (!path.includes(neighbor)) {
+                findPaths(graph, neighbor, path, allPaths);
+            }
+        }
+
+        path.pop(); // Backtrack to explore other paths
+      }
+
+      // Function to list all paths longer than 3
+      function listPermutations(graph) {
+        const allPaths = [];
+        for (let node in graph) {
+            findPaths(graph, node, [], allPaths);
+        }
+        return allPaths;
+      }
+
+      // Run the function and log the results
+      const paths = listPermutations(graph);
+      console.log("Paths longer than 3 nodes:", paths);
+    </script>
+</body>
+</html>

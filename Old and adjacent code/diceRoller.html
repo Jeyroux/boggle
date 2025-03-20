@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Roller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            justify-content: center;
+            margin: 20px;
+        }
+        .dice {
+            font-size: 36px;
+            font-weight: bold;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dice Roller</h1>
+    <div class="grid" id="diceGrid">
+        <!-- Dice elements will be dynamically created -->
+    </div>
+    <button onclick="rollDice()">Roll Dice</button>
+
+    <script>
+        const diceGrid = document.getElementById('diceGrid');
+
+        // Initialize the grid with dice
+        for (let i = 0; i < 16; i++) {
+            const diceElement = document.createElement('div');
+            diceElement.className = 'dice';
+            diceElement.textContent = '🎲'; // Placeholder icon for dice
+            diceGrid.appendChild(diceElement);
+        }
+
+        function rollDice() {
+            const diceElements = document.querySelectorAll('.dice');
+            diceElements.forEach(dice => {
+                const randomRoll = Math.floor(Math.random() * 6) + 1; // Random number from 1 to 6
+                dice.textContent = randomRoll;
+            });
+        }
+    </script>
+</body>
+</html>

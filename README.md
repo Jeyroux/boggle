@@ -5,9 +5,9 @@ The goal of this project is to describe the process of setting up a Github proje
 ## Setting up Github
 
 - [x] Create a README.md file
-- [ ] Set up Github
-- [ ] Drag existing code into Github (created with the help of microsoft copilot)
-- [ ] Describe how to run the Boggle project
+- [x] Set up Github on my computer
+- [x] Drag existing code into Github (created with the help of microsoft copilot)
+- [x] Describe how to run the boggle project
 
 ## Boggle
 
@@ -24,6 +24,9 @@ If doing keyboard inputs and removing the need for pen and paper for the user to
 If doing finger/mouse inputs and removing the need for a keyboard input to play
 - [ ] Must have the ability to let the user drag their finger/mouse across the grid, instead of using a keyboard to input words
 
+## How to run the Boggle project
+The current file of interest is boggle.html as it has the closest working boggle game. The other files in the Old and adjacent code are ones generated while exploring the concept (i.e. timers, random number generators). The boggle.html file can be opened with your preferred browser. I would also recommend [this Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) if you were interested in running and testing your own webservers from Visual Studio Code.
+
 ## Resources used
 https://www.makeareadme.com/  
 I used this website to get a README.md template and to learn a little about Markdown formatting.
@@ -36,6 +39,16 @@ I used this website to revise the rules of boggle
 
 https://stackoverflow.com/questions/47344571/how-to-draw-checkbox-or-tick-mark-in-github-markdown-table  
 I used this website to help me create checkboxes for my README.md
+
+https://github.com/apps/desktop
+I used this website to install Github Desktop on my computer
+
+https://git-scm.com/downloads/win
+I used this website to install git on my computer. I already had Visual Studio Code on my computer.
+
+https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+I used this Visual Studio Code extension to start and stop webservers from the Visual Studio Code program.
+
 ## Reflection
 TODO
 
